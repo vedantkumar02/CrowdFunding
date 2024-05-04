@@ -213,8 +213,7 @@ const CampaignDetails = () => {
                   state.amountCollected
                 )}%`,
                 maxWidth: "100%",
-              }}
-            ></div>
+              }}></div>
           </div>
         </div>
 
@@ -269,23 +268,27 @@ const CampaignDetails = () => {
 
             <div className="mt-[20px] flex flex-col gap-4">
               {detail.length > 0 ? (
-              
                 detail.map((item, index) => (
-
-                  <div
-                    key={`${item.donator}-${index}`}
-                    className="flex justify-between items-center gap-4"
-                  >
-                    <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd] leading-[26px] break-ll">
-                      {index + 1}. {item.from}
-                    </p>
-                    <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
-                      {ethers.utils.formatEther(item.value)}
-                    </p>
-                    <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
-                      {formatDate(item.timeStamp)}
-                    </p>
-                  </div>
+                  
+                    <div
+                      key={`${item.donator}-${index}`}
+                      className="flex justify-between items-center gap-4">
+                     <a
+                    href={`https://sepolia.etherscan.io/tx/${item.hash}`}
+                    target="_blank"
+                    rel="noopener noreferrer" className="p-[1px] border-b">
+                      <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd] leading-[26px] break-ll">
+                        {index + 1}. {item.from}
+                      </p>
+                      </a>
+                      <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
+                        {ethers.utils.formatEther(item.value)}
+                      </p>
+                      <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
+                        {formatDate(item.timeStamp)}
+                      </p>
+                    </div>
+                
                 ))
               ) : (
                 <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] text-justify">
@@ -295,8 +298,7 @@ const CampaignDetails = () => {
             </div>
             <button
               className="font-epilogue font-semibold text-[18px] text-white uppercase rounded-[15px] bg-[#1dc071] mt-[20px] px-4 py-2"
-              onClick={handleDeleteCampaign}
-            >
+              onClick={handleDeleteCampaign}>
               Delete Campaign
             </button>
           </div>
